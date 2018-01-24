@@ -21,7 +21,7 @@ class Usuario_model extends CI_Model{
 		
 		$this->db->insert('usuario',$this);
 		
-		return ($this->db->affected_rows() != 1) ? false : true;
+		return ($this->db->affected_rows() != 1) ? false : $this->db->insert_id();
 		
 	}
 	
