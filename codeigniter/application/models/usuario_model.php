@@ -25,6 +25,13 @@ class Usuario_model extends CI_Model{
 		
 	}
 	
+	public function validar($key){
+		$this->db->set('activo',1);
+		$this->db->where('md5(id)',$key);
+		$this->db->update('usuario');
+		return ($this->db->affected_rows() == 1) ? true : false;
+	}
+	
 }
 
 ?>
