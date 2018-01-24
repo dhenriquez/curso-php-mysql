@@ -6,7 +6,7 @@ class Sitio extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('url','form'));
-		$this->load->library(array('datos','form_validation'));
+		$this->load->library(array('datos','form_validation','email'));
 	}
 	
 	public function index(){
@@ -73,13 +73,13 @@ class Sitio extends CI_Controller {
 		$data = array(
 			'titulo' => 'Contacto',
 			'descripcion' => 'Si necesitas más información sobre nosotros aquí nos puedes escribir.',
-			'enviado' => 'Contacto enviado con éxito!'
+			'enviado' => $this->input->post('nombre') . ' tu contacto enviado con éxito!'
 		);
 		
-		/*$this->form_validation->set_rules('nombre', 'Nombre', 'required', array('required' => 'El %s es requerido.'));
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required', array('required' => 'El %s es requerido.'));
 		$this->form_validation->set_rules('apellido', 'Apellido', 'required', array('required' => 'El %s es requerido.'));
 		$this->form_validation->set_rules('email', 'Email', 'required', array('required' => 'El %s es requerido.'));
-		$this->form_validation->set_rules('mensaje', 'Mensaje', 'required', array('required' => 'El %s es requerido.'));*/
+		$this->form_validation->set_rules('mensaje', 'Mensaje', 'required', array('required' => 'El %s es requerido.'));
 		
 		$this->load->view('header', $header);
 		if($this->form_validation->run() == FALSE){
