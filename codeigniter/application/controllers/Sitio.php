@@ -19,7 +19,8 @@ class Sitio extends CI_Controller {
 		
 		$data = array(
 			'titulo' => '¡Bienvenido!',
-			'descripcion' => 'Aquí podrás encontrar información de ocio.'
+			'descripcion' => 'Aquí podrás encontrar información de ocio.',
+			'noticias' => false
 		);
 		
 		$this->load->view('header', $header);
