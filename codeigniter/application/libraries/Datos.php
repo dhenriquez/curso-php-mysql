@@ -11,9 +11,10 @@ class Datos{
 		$noticias = array();
 		foreach($xml->channel->item as $noticia){
 			$noticias[] = array(
-				'titulo' => $noticia->title,
-				'link' => $noticia->link,
-				'description' => $noticia->description
+				'titulo' => (string) $noticia->title,
+				'link' => (string) $noticia->link,
+				'description' => (string) $noticia->description,
+				'imagen' => 'http://www.cooperativa.cl' . (string) $noticia->prontus_foto640
 			);
 		}
 		return $noticias;
