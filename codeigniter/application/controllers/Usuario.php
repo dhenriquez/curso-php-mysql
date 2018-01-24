@@ -37,7 +37,8 @@ class Usuario extends CI_Controller {
 			$login['password'] = $this->input->post('password');;
 			$res = $this->usuario_model->login($login);
 			if($res){
-				$this->load->view('perfil_view', $data);
+				$this->session->set_userdata($res);
+				redirect('usuario/perfil', 'refresh');
 			}else{
 				$data['error'] = 'Usuario y/o contraseña incorrectos.';
 				$this->load->view(__FUNCTION__.'_view', $data);
@@ -104,19 +105,28 @@ class Usuario extends CI_Controller {
 	}
 	
 	public function perfil(){
-		$header = array(
-			'active' => __FUNCTION__
-		);
-		
-		$data = array(
-			'titulo' => '¡Bienvenido!',
-			'descripcion' => 'Aquí podrás encontrar información de ocio.',
+		if($this->session->has_userdata('usuario')){
+			$header = array(
+				'active' => __FUNCTION__
+			);
 			
-		);
-		
-		$this->load->view('header', $header);
-		$this->load->view(__FUNCTION__.'_view', $data);
-		$this->load->view('footer');
+			$default = "https://www.somewhere.com/homestar.jpg";
+			$size = 250;
+			$grav_url = "https://www.gravatar.com/avatar/" . md5( strtolower( trim( $this->session->usuario_email ) ) ) . "?s=" . $size;
+			
+			$data = array(
+				'titulo' => '¡Bienvenido!',
+				'descripcion' => 'Aquí podrás encontrar información de ocio.',
+				'grav_url' => $grav_url
+
+			);
+
+			$this->load->view('header', $header);
+			$this->load->view(__FUNCTION__.'_view', $data);
+			$this->load->view('footer');
+		}else{
+			redirect('usuario/login', 'refresh');
+		}
 	}
 	
 	public function validar(){
@@ -130,7 +140,8 @@ class Usuario extends CI_Controller {
 	}
 	
 	public function salir(){
-		redirect('sitio', 'refresh');
+		$this->session->unset_userdata('usuario');
+		redirect('usuario/login', 'refresh');
 	}
 }
 ?>
