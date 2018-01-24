@@ -12,7 +12,7 @@ class Usuario_model extends CI_Model{
 		$this->usuario = $datos['usuario'];
 		$this->password = $datos['password'];
 		$query = $this->db->get_where('usuario',array('usuario'=>$this->usuario,'password'=>$this->password));
-		return ($query->num_rows()>0) ? $query->row() : false;
+		return ($query->num_rows()>0) ? $query->row_array() : false;
 	}
 	
 	public function registrar($datos = array()){
