@@ -72,7 +72,8 @@ class Sitio extends CI_Controller {
 		
 		$data = array(
 			'titulo' => 'Contacto',
-			'descripcion' => 'Si necesitas más información sobre nosotros aquí nos puedes escribir.'
+			'descripcion' => 'Si necesitas más información sobre nosotros aquí nos puedes escribir.',
+			'enviado' => 'Contacto enviado con éxito!'
 		);
 		
 		/*$this->form_validation->set_rules('nombre', 'Nombre', 'required', array('required' => 'El %s es requerido.'));
