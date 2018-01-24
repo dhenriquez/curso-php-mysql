@@ -1,0 +1,25 @@
+.index{
+	background:#743f8c url(../img/bg-youtube.png) top left repeat;
+}
+.youtube{
+	background:#ff0000 url(../img/bg-youtube.png) top left repeat;
+}
+.clima{
+	background:#9bc9e3 url(../img/bg-clima.png) top left repeat;
+}
+.contacto{
+	background:#9bc9e3 url(../img/bg-contacto.png) top left repeat;
+}
+
+.titulo.row{
+	color: aliceblue;
+	padding: 50px 0;
+	margin: 0 0 20px;
+}
+
+footer.footer{
+	margin: 20px 0 0;
+	color: aliceblue;
+	padding: 20px 0;
+	background: #000;
+}
