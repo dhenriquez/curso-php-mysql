@@ -46,7 +46,7 @@
 					</div>
 				</div>
 				<p>* Campos requeridos</p>
-				<button type="submit" class="btn btn-primary">Enviar</button>
+				<button type="submit" class="btn btn-primary">Registrarme</button>
 				</form>
 			</div>
 		</div>
