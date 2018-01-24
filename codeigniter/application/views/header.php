@@ -50,10 +50,10 @@
 				</li>
 				<?php }else{ ?>
 				<li class="nav-item <?php if($active=='perfil'){ echo 'active'; }; ?>">
-					<a class="nav-link" href="<?php echo site_url('usuario/perfil');?>">Nombre del Usuario</a>
+					<a class="nav-link" href="<?php echo site_url('usuario/perfil');?>" title="Ver perfil"><?php echo $this->session->usuario_nombre;?></a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="<?php echo site_url('usuario/salir');?>">Salir</a>
+					<a class="nav-link" href="<?php echo site_url('usuario/salir');?>" title="Salir">Salir</a>
 				</li>
 				<?php }; ?>
 			</ul>
