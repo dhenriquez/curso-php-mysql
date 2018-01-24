@@ -1,5 +1,5 @@
 <main role="main">
-	<div class="contacto">
+	<div class="registrar">
 		<div class="container">
 			<div class="titulo row">
 				<div class="col-12 text-center">
@@ -19,7 +19,7 @@
 				<h1>
 					<?php echo $enviado; ?>
 				</h1>
-				<p><?php echo anchor('usuario/login', 'Volver'); ?></p>
+				<p><?php echo anchor('sitio', 'Volver'); ?></p>
 			</div>
 		</div>
 	</div>
