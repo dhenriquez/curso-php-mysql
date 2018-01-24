@@ -1,5 +1,5 @@
 <main role="main">
-	<div class="contacto">
+	<div class="registrar">
 		<div class="container">
 			<div class="titulo row">
 				<div class="col-12 text-center">
