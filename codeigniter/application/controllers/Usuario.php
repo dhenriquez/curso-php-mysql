@@ -7,6 +7,7 @@ class Usuario extends CI_Controller {
 		parent::__construct();
 		$this->load->helper(array('url','form'));
 		$this->load->library(array('form_validation','email'));
+		$this->load->model('usuario_model');
 	}
 	
 	public function index(){
@@ -29,6 +30,10 @@ class Usuario extends CI_Controller {
 	}
 	
 	public function registrar(){
+		
+		$this->load->model('usuario_model');
+		$res = $this->usuario_model->getusuarios();
+		
 		$header = array(
 			'active' => __FUNCTION__
 		);
@@ -36,7 +41,8 @@ class Usuario extends CI_Controller {
 		$data = array(
 			'titulo' => '¡Registrar!',
 			'descripcion' => 'Aquí puedes completar tus datos para poder registrarte.',
-			'enviado' => $this->input->post('nombre') . ' revisa tu correo para validar tu registro!'
+			'enviado' => $this->input->post('nombre') . ' revisa tu correo para validar tu registro!',
+			'query' => ''
 		);
 		
 		$this->form_validation->set_rules('nombre', 'Nombre completo', 'required', array('required' => 'El %s es requerido.'));

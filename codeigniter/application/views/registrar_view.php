@@ -51,4 +51,5 @@
 			</div>
 		</div>
 	</div>
+<?php var_dump($query); ?>
 </main><!-- /.container -->
