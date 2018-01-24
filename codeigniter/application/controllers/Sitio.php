@@ -17,10 +17,12 @@ class Sitio extends CI_Controller {
 			'active' => __FUNCTION__
 		);
 		
+		$noticias = $this->datos->Noticias();
+		
 		$data = array(
 			'titulo' => '¡Bienvenido!',
 			'descripcion' => 'Aquí podrás encontrar información de ocio.',
-			'noticias' => false
+			'noticias' => $noticias
 		);
 		
 		$this->load->view('header', $header);
