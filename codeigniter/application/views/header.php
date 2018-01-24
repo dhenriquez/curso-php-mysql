@@ -41,18 +41,21 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav my-2 my-md-0">
+				<?php if(!$this->session->has_userdata('usuario')){ ?>
 				<li class="nav-item <?php if($active=='login'){ echo 'active'; }; ?>">
 					<a class="nav-link" href="<?php echo site_url('usuario/login');?>">Login</a>
 				</li>
 				<li class="nav-item <?php if($active=='registrar'){ echo 'active'; }; ?>">
 					<a class="nav-link" href="<?php echo site_url('usuario/registrar');?>">Registrar</a>
 				</li>
+				<?php }else{ ?>
 				<li class="nav-item <?php if($active=='perfil'){ echo 'active'; }; ?>">
 					<a class="nav-link" href="<?php echo site_url('usuario/perfil');?>">Nombre del Usuario</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link" href="<?php echo site_url('usuario/salir');?>">Salir</a>
 				</li>
+				<?php }; ?>
 			</ul>
 		</div>
 	</nav>
