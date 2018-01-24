@@ -2,15 +2,15 @@
 
 class Usuario_model extends CI_Model{
 	
-	public $nombre;
-	public $email;
+	public $usuario_nombre;
+	public $usuario_email;
 	public $usuario;
 	public $password;
 	public $activo = 0;
 		
 	public function get_usuarios(){
 		$query = $this->db->get('usuario');
-        return $query->result();
+		return $query->result();
 	}
 	
 	public function registrar($datos = array()){
