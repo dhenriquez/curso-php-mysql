@@ -90,7 +90,7 @@ class Sitio extends CI_Controller {
 			$email = $this->input->post('email');
 			$nombre = $this->input->post('nombre') . " " . $this->input->post('apellido');
 			$asunto = $this->input->post('asunto');
-			$mensaje = $this->input->post('mensaje');
+			$mensaje = "Nombre: " . $nombre . " Email: " . $email . " Asunto: " . $asunto . " Mensaje: " . $this->input->post('mensaje');
 			
 			$this->email->from($email,$nombre);
 			$this->email->to($this->email_para);
