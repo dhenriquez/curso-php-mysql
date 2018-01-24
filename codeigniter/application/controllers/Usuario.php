@@ -6,7 +6,7 @@ class Usuario extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('url','form'));
-		$this->load->library(array('form_validation','email'));
+		$this->load->library(array('form_validation','email','session'));
 		$this->load->model('usuario_model');
 	}
 	

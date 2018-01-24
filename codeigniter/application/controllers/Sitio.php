@@ -8,7 +8,7 @@ class Sitio extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('url','form'));
-		$this->load->library(array('datos','form_validation','email'));
+		$this->load->library(array('datos','form_validation','email','session'));
 	}
 	
 	public function index(){
