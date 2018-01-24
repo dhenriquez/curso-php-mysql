@@ -11,6 +11,16 @@
 	background:#9bc9e3 url(../img/bg-contacto.png) top left repeat;
 }
 
+.login{
+	background:#9bc9e3 url(../img/bg-login.png) top left repeat;
+}
+.registrar{
+	background:#9bc9e3 url(../img/bg-registrar.png) top left repeat;
+}
+.perfil{
+	background:#9bc9e3 url(../img/bg-perfil.png) top left repeat;
+}
+
 .titulo.row{
 	color: aliceblue;
 	padding: 50px 0;
