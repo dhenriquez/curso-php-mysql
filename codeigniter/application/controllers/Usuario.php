@@ -21,11 +21,29 @@ class Usuario extends CI_Controller {
 		
 		$data = array(
 			'titulo' => '¡Bienvenido!',
-			'descripcion' => 'Aquí podrás encontrar información de ocio.'
+			'descripcion' => 'Aquí puedes entrar en tu perfil de usuario.',
+			'error' => false
 		);
 		
+		$this->form_validation->set_rules('usuario', 'Usuario', 'required', array('required' => 'El %s está vacío.'));
+		$this->form_validation->set_rules('password', 'Contraseña', 'required', array('required' => 'La %s está vacía.'));
+		
+		
 		$this->load->view('header', $header);
-		$this->load->view(__FUNCTION__.'_view', $data);
+		if($this->form_validation->run() == FALSE){
+			$this->load->view(__FUNCTION__.'_view', $data);
+		}else{
+			$login['usuario'] = $this->input->post('usuario');;
+			$login['password'] = $this->input->post('password');;
+			$res = $this->usuario_model->login($login);
+			if($res){
+				$this->load->view('perfil_view', $data);
+			}else{
+				$data['error'] = 'Usuario y/o contraseña incorrectos.';
+				$this->load->view(__FUNCTION__.'_view', $data);
+			}
+			
+		}
 		$this->load->view('footer');
 	}
 	
@@ -40,9 +58,9 @@ class Usuario extends CI_Controller {
 		);
 		
 		$this->form_validation->set_rules('nombre', 'Nombre completo', 'required', array('required' => 'El %s es requerido.'));
-		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[usuario.usuario]', array('required' => 'El %s es requerido.','is_unique'=>'El %s ya se encuentra en uso.'));
+		$this->form_validation->set_rules('email', 'Email', 'required|is_unique[usuario.usuario_email]', array('required' => 'El %s es requerido.','is_unique'=>'El %s ya se encuentra en uso.'));
 		$this->form_validation->set_rules('usuario', 'Usuario', 'required|is_unique[usuario.usuario]', array('required' => 'El %s es requerido.','is_unique'=>'El %s ya se encuentra en uso.'));
-		$this->form_validation->set_rules('password', 'Contraseña', 'required', array('required' => 'El %s es requerida.'));
+		$this->form_validation->set_rules('password', 'Contraseña', 'required', array('required' => 'La %s es requerida.'));
 		
 		$this->load->view('header', $header);
 		if($this->form_validation->run() == FALSE){
@@ -67,8 +85,9 @@ class Usuario extends CI_Controller {
 					'descripcion' => 'Ya te encuentras inscrito en nuestro sitio!',
 					'enviado' => $nombre . ' revisa tu correo para validar tu registro!',
 				);
+				$link = site_url('usuario/validar') . '?k=' . md5($res);
 				$asunto = 'Registro de usuario';
-				$mensaje = 'Te acabas de registrar en nuestro sitio.';
+				$mensaje = 'Te acabas de registrar en nuestro sitio. Para validar el registro copia y pega en tu navegador el siguiente link: ' . $link;
 
 				$this->email->from('no-responder@dhenriquez.cl','Sitio de Prueba');
 				$this->email->to($email);
@@ -98,6 +117,16 @@ class Usuario extends CI_Controller {
 		$this->load->view('header', $header);
 		$this->load->view(__FUNCTION__.'_view', $data);
 		$this->load->view('footer');
+	}
+	
+	public function validar(){
+		$k = $this->input->get('k');
+		$res = $this->usuario_model->validar($k);
+		if($res){
+			redirect('usuario/login', 'refresh');
+		}else{
+			redirect('sitio', 'refresh');
+		}
 	}
 	
 	public function salir(){
