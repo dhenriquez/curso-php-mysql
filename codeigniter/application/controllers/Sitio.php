@@ -3,6 +3,8 @@ defined('BASEPATH') OR exit('Acceso directo no permitido');
 
 class Sitio extends CI_Controller {
 	
+	private $email_para = 'contacto@dhenriquez.cl';
+	
 	function __construct(){
 		parent::__construct();
 		$this->load->helper(array('url','form'));
@@ -73,7 +75,7 @@ class Sitio extends CI_Controller {
 		$data = array(
 			'titulo' => 'Contacto',
 			'descripcion' => 'Si necesitas más información sobre nosotros aquí nos puedes escribir.',
-			'enviado' => $this->input->post('nombre') . ' tu contacto enviado con éxito!'
+			'enviado' => $this->input->post('nombre') . ' tu contacto fue enviado con éxito!'
 		);
 		
 		$this->form_validation->set_rules('nombre', 'Nombre', 'required', array('required' => 'El %s es requerido.'));
@@ -85,6 +87,16 @@ class Sitio extends CI_Controller {
 		if($this->form_validation->run() == FALSE){
 			$this->load->view(__FUNCTION__.'_view', $data);
 		}else{
+			$email = $this->input->post('email');
+			$nombre = $this->input->post('nombre') . " " . $this->input->post('apellido');
+			$asunto = $this->input->post('asunto');
+			$mensaje = $this->input->post('mensaje');
+			
+			$this->email->from($email,$nombre);
+			$this->email->to($this->email_para);
+			$this->email->subject($asunto);
+			$this->email->message($mensaje);
+			$this->email->send();
 			$this->load->view(__FUNCTION__.'_enviado_view', $data);
 		}
 		$this->load->view('footer');
