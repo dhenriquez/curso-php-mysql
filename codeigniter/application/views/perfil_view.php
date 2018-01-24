@@ -15,8 +15,17 @@
 	</div>
 	<div class="container">
 		<div class="row">
-			<div class="col-12 ">
-				perfil
+			<div class="col-12 col-md-4">
+				<img src="<?php echo $grav_url; ?>" alt="Gravatar" class="img-fluid"/>
+			</div>
+			<div class="col-12 col-md-8">
+				<h4>Información del Usuario</h4>
+				<hr>
+				<p>
+					<strong>Usuario</strong>: <?php echo $this->session->usuario;?><br>
+					<strong>Nombre completo</strong>: <?php echo $this->session->usuario_nombre;?><br>
+					<strong>Email</strong>: <?php echo $this->session->usuario_email;?>
+				</p>
 			</div>
 		</div>
 	</div>
