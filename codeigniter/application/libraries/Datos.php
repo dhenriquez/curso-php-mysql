@@ -7,7 +7,16 @@ class Datos{
 	private $watch_url = 'https://www.youtube.com/watch?v=';
 	
 	public function Noticias(){
-		return false;
+		$xml = simplexml_load_file('http://www.cooperativa.cl/noticias/site/tax/port/all/rss_4___1.xml');
+		$noticias = array();
+		foreach($xml->channel->item as $noticia){
+			$noticias[] = array(
+				'titulo' => $noticia->title,
+				'link' => $noticia->link,
+				'description' => $noticia->description
+			);
+		}
+		return $noticias;
 	}
 	
 	public function Clima(){
