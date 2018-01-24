@@ -75,15 +75,16 @@ class Sitio extends CI_Controller {
 			'descripcion' => 'Si necesitas más información sobre nosotros aquí nos puedes escribir.'
 		);
 		
-		$this->form_validation->set_rules('nombre', 'Nombre', 'required');
-		$this->form_validation->set_rules('apellido', 'Apellido', 'required');
-		$this->form_validation->set_rules('asunto', 'Asunto', 'required');
+		$this->form_validation->set_rules('nombre', 'Nombre', 'required', array('required' => 'El %s es requerido.'));
+		$this->form_validation->set_rules('apellido', 'Apellido', 'required', array('required' => 'El %s es requerido.'));
+		$this->form_validation->set_rules('email', 'Email', 'required', array('required' => 'El %s es requerido.'));
+		$this->form_validation->set_rules('mensaje', 'Mensaje', 'required', array('required' => 'El %s es requerido.'));
 		
 		$this->load->view('header', $header);
 		if($this->form_validation->run() == FALSE){
 			$this->load->view(__FUNCTION__.'_view', $data);
 		}else{
-			$this->load->view(__FUNCTION__.'_view', $data);
+			$this->load->view(__FUNCTION__.'_enviado_view', $data);
 		}
 		$this->load->view('footer');
 	}
