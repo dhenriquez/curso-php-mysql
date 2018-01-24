@@ -6,6 +6,10 @@ class Datos{
 	private $channelId = 'UCFDTPtTGOtRKiIp4mfxP6kg';
 	private $watch_url = 'https://www.youtube.com/watch?v=';
 	
+	public function Noticias(){
+		return false;
+	}
+	
 	public function Clima(){
 		$xml = simplexml_load_file('https://www.yr.no/place/Chile/Santiago/Santiago/forecast.xml');
 		
