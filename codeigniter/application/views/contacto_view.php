@@ -28,26 +28,26 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="nombre">Nombre*</label>
-						<input type="text" class="form-control" id="nombre" placeholder="Nombre">
+						<input type="text" class="form-control" id="nombre" placeholder="Nombre" value="<?php echo set_value('nombre');?>">
 					</div>
 					<div class="form-group col-md-6">
 						<label for="apellido">Apellido*</label>
-						<input type="text" class="form-control" id="apelido" placeholder="Apellido">
+						<input type="text" class="form-control" id="apelido" placeholder="Apellido" value="<?php echo set_value('apellido');?>">
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label for="asunto">Asunto</label>
-						<input type="text" class="form-control" id="asunto" placeholder="Asunto">
+						<input type="text" class="form-control" id="asunto" placeholder="Asunto" value="<?php echo set_value('asunto');?>">
 					</div>
 					<div class="form-group col-md-6">
 						<label for="email">Email*</label>
-						<input type="email" class="form-control" id="email" placeholder="Email">
+						<input type="email" class="form-control" id="email" placeholder="Email" value="<?php echo set_value('email');?>">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="mensaje">Mensaje*</label>
-					<textarea class="form-control" id="mensaje" placeholder="Mensaje"></textarea>
+					<textarea class="form-control" id="mensaje" placeholder="Mensaje"><?php echo set_value('mensaje');?></textarea>
 				</div>
 				<p>* Campos requeridos</p>
 				<button type="submit" class="btn btn-primary">Enviar</button>
