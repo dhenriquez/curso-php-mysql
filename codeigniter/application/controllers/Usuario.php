@@ -88,7 +88,7 @@ class Usuario extends CI_Controller {
 				);
 				$link = site_url('usuario/validar') . '?k=' . md5($res);
 				$asunto = 'Registro de usuario';
-				$mensaje = 'Te acabas de registrar en nuestro sitio. Para validar el registro copia y pega en tu navegador el siguiente link: ' . $link;
+				$mensaje = '<p>Te acabas de registrar en nuestro sitio. Para validar el registro copia y pega en tu navegador el siguiente link: ' . $link . '</p><div itemscope itemtype="http://schema.org/EmailMessage"><div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction"><link itemprop="target" href="'.$link.'"/><meta itemprop="name" content="Validar"/></div><meta itemprop="description" content="Validar"/></div>';
 
 				$this->email->from('no-responder@dhenriquez.cl','Sitio de Prueba');
 				$this->email->to($email);
